@@ -1,0 +1,28 @@
+<div id="direct_upload" class="basic-form dz-clickable needsclick">
+  <%= form_for(@photo, html: {remote: true, class: 'new_photo needsclick dz-clickable'}) do |f| %>
+    <div class="dz-message needsclick dz-clickable">
+      Drop files here or click to upload.
+    </div>
+    <%= f.hidden_field :bytes %>
+    <%= hidden_field_tag :direct, params[:direct] %>
+  <% end %>
+</div>
+<div class="gallery clearfix">
+  <% @photos.each do |img| %>
+  <div class="col-lg-3 col-md-4 col-xs-6 photo">
+    <div class="img-border clearfix">
+      <%= image_tag(img.image.thumbnail.url, :class => "") %>
+    </div>
+    <%# if current_user.id == img.user_id %>
+      <!--<a class="delete-btn" rel="nofollow" data-id="<%= img.id %>">×</a>-->
+    <%# end %>
+  </div>
+  <% end %>
+</div>
+
+<!-- Configure Cloudinary jQuery plugin -->
+<%= csrf_meta_tags %>
+<%= javascript_include_tag "cloudinary_settings", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "photos", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "dropzone", "data-turbolinks-track" => "reload" %>
+<%= cloudinary_js_config %>

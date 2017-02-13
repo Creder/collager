@@ -1,0 +1,71 @@
+<div class="row" style="margin: 10px auto">
+  <%= form_for(@photo, html: {remote: true, class: 'new_photo'}) do |f| %>
+    <%= f.hidden_field :bytes %>
+    <%= hidden_field_tag :direct, params[:direct] %>
+  <% end %>
+  <div class="upload-canvas" id="direct_upload">
+    <canvas id="c"></canvas>
+  </div>
+</div>
+
+<div id="mySidenav" class="sidenav">
+  <button id="gallery-close" class="btn btn-primary closebtn">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </button>
+  <% @photos.each do |img|%>
+  <div class="col-md-6 clearfix" style="height:100px;margin-bottom:5px;">
+    <%= cl_image_tag(img.image, :width => 250, :height => 100, :crop => 'fit') %>
+  </div>
+  <% end %>
+</div>
+
+<%= form_for(@collage, url: {action: "update"},method: :patch, remote: true) do |f| %>
+  <%= f.hidden_field :image %>
+  <%= f.hidden_field :collage_json, value: @collage[:collage_json]%>
+  <%= f.hidden_field :public_id, value: @collage[:public_id]%>
+<% end %>
+
+<div id="settings-nav" class="sidenav">
+  <button id="settings-close" class="btn btn-primary settings-closebtn">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </button>
+  <div class="col-md-12 clearfix">
+    <label><span style="color:#fff">Width:</span></label>
+    <input id="canvas-width" type="text" class="form-control">
+  </div>
+  <div class="col-md-12 clearfix">
+    <label><span style="color:#fff">Height:</span></label>
+    <input id="canvas-height" type="text" class="form-control">
+  </div>
+  <fieldset id="controlls" disabled="true">
+  <div class="col-md-12 clearfix">
+    <label><span style="color:#fff">Scale:</span></label>
+    <input id="scale-control" value="1" min="0.1" max="3" step="0.1" type="range">
+  </div>
+  <div class="col-md-12 clearfix">
+    <label><span style="color:#fff">z-index:</span></label>
+    <input id="z-index" type="text" value="0" class="form-control">
+  </div>
+  <div class="col-md-12 clearfix" style="margin-top:10px">
+    <button id="remove-img" type="button" class="btn btn-block btn-danger">Remove image</button>
+  </div>
+  </fieldset>
+  <div class="col-md-12 clearfix" style="margin-top:40px">
+    <button id="save-img" type="button" class="btn btn-block btn-success">Save image</button>
+  </div>
+</div>
+
+<button id="gallery" class="btn btn-primary gallery-btn">
+  <span class="glyphicon glyphicon-picture"></span>
+</button>
+
+<button id="settings" class="btn btn-default settings-btn">
+  <span class="glyphicon glyphicon-cog"></span>
+</button>
+
+<%= csrf_meta_tags %>
+<%= javascript_include_tag "dropzone", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "fabric.min", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "cloudinary_settings", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "show", "data-turbolinks-track" => "reload" %>
+<%= cloudinary_js_config %>
