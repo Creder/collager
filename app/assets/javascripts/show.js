@@ -26,7 +26,7 @@ $(document).ready(function(){
       currentDivTop = directUpload.position().top;
 
   let canvas = this.__canvas = new fabric.Canvas("c");
-  canvasSize(1000, 1500);
+  canvasSize(600, 800);
   canvas.backgroundColor = "#fff";
   canvas.selection = false;
   canvas.renderAll();
@@ -79,6 +79,14 @@ $(document).ready(function(){
     canvas.deactivateAll().renderAll();
   });
 
+$('#angle-control').on("change mousemove", function(){
+    buttonEvent(removeButton);
+    if(activeObject){
+      activeObject.setAngle(parseInt(this.value, 10)).setCoords();
+    }
+    canvas.renderAll();
+    initButtons();
+  });
   $('#scale-control').on("change mousemove", function(){
     buttonEvent(removeButton);
     if(activeObject){
@@ -217,7 +225,7 @@ $(document).ready(function(){
   }
 
   function createButton(type, title){
-    template = `<input type="button"
+    template = `<input type="checkbox"
       id=${type} value=${title} class="btn btn-primary btn-filter"/>`;
 
     return $(template);

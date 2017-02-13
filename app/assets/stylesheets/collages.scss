@@ -3,16 +3,29 @@
   margin-top: 10px;
 
   input {
-    min-width: 23%;
+    min-width: 10%;
   }
 }
 
+
+.btn-success {
+    color: #000;
+    background-color: #efae12;
+    border-color: #ffa200;
+}
+
+.btn-success:hover{
+    color: #060606;
+    background-color: #ce9409;
+    border-color: #CB6E05;
+}
 .collage-item {
+  margin-top: 10px;
   height: 200px;
 }
 
 .upload-canvas {
-  max-height: 590px;
+  max-height: 90%;
   max-width: 90%;
   min-width: 0;
   overflow: scroll;

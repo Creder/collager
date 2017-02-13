@@ -1,10 +1,10 @@
-<div class="col-md-12 collage-create">
+<div class="collage-create">
   <%= form_for @collage, url: {action: "create"} do |f| %>
-    <%= f.submit "Create", class: "btn btn-lg btn-success" %>
+    <%= f.submit "New Collage", class: "btn btn-lg btn-success" %>
   <% end %>
 </div>
 <% @collages.each do |collage| %>
-  <div class="col-lg-3 col-md-4 col-xs-6 thumb collage-item">
+  <div class="col-lg-4 col-md-push-1 col-xs-6 thumb collage-item">
     <a class="thumbnail" href="<%= collage_path(collage) %>">
       <%= cl_image_tag(collage[:public_id], :height => 200, :width => 300, :crop => 'fit', class: "img-responsive") %>
     </a>
