@@ -5,10 +5,11 @@
 html,
 body {
   height: 100%;
+  font-size: 20px;
 }
 
 body {
-  background-color: #eeeeee;
+  background-color: #847e7e;
 }
 // make all images responsive by default
 img {
@@ -43,7 +44,7 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  background-color: #847e7e;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar

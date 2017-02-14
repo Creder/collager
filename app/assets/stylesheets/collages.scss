@@ -12,23 +12,30 @@
     color: #000;
     background-color: #efae12;
     border-color: #ffa200;
-}
 
-.btn-success:hover{
+    &:hover{
     color: #060606;
     background-color: #ce9409;
     border-color: #CB6E05;
+    }
+
+    &:focus{
+    color: #060606;
+    background-color: #ce9409;
+    border-color: #CB6E05;
+    }
 }
+
 .collage-item {
   margin-top: 10px;
   height: 200px;
 }
 
 .upload-canvas {
-  max-height: 90%;
-  max-width: 90%;
+  max-height: 100%;
+  max-width: 100%;
   min-width: 0;
-  overflow: scroll;
+  
 }
 
 .sidenav {
